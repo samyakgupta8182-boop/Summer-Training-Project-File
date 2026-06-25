@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Studio - Premium Used Car Price Predictor</title>
+    <meta name="description" content="Calculate the exact market value of any used car instantly. Powered by an advanced Machine Learning Linear Regression model with 94.3% prediction accuracy.">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="style.css?v=1.0.2">
+</head>
+<body>
+
+    <!-- STICKY GLASSMORPHIC HEADER -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                Car Studio <span class="logo-dot"></span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item active"><a href="#">Home</a></li>
+                <li class="nav-item"><a href="#model-analytics">Analytics</a></li>
+                <li class="nav-item"><a href="#predictor">Predictor</a></li>
+                <li class="nav-item"><a href="#insights">Insights</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Light/Dark Theme">☀️</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO WELCOME SECTION -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h1>Find the True Value of Any <span>Used Car</span> Instantly.</h1>
+                <p>Car Studio utilizes state-of-the-art Machine Learning models trained on over 15,000 detailed Indian used car transactions to give you the most accurate valuation in seconds.</p>
+                <div class="hero-buttons">
+                    <a href="#predictor"><button class="btn-primary">Start Valuation <i class="fa-solid fa-arrow-right"></i></button></a>
+                    <a href="#insights"><button class="btn-secondary">Explore Insights</button></a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <img src="assets/hero_car.png" alt="Concept Luxury Car in Studio" class="hero-image">
+                <div class="hero-image-overlay">
+                    <div class="hero-image-tag">Model Accuracy: 94.3%</div>
+                    <div class="hero-image-title">Interactive AI Price Prediction Engine</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODEL ANALYTICS SECTION -->
+    <section id="model-analytics" class="analytics-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Model <span>Performance Analytics</span></h2>
+                <p>Compare the R² (Coefficient of Determination) scores of all algorithms tested on our dataset of 15,000 used cars. Linear Regression is our selected active engine.</p>
+            </div>
+            
+            <div class="chart-dashboard">
+                <div class="chart-container-image">
+                    <img src="assets/model_comparison.png?v=1.0.1" alt="Model R² Scores Comparison" class="analytics-chart-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE PREDICTOR SECTION -->
+    <section id="predictor" class="predictor-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Evaluate Your <span>Car Value</span></h2>
+                <p>Provide the specifications of your vehicle below. Our Linear Regression engine will cross-examine the metrics and compile the real-time resale price.</p>
+            </div>
+            
+            <div class="dashboard-grid">
+                <!-- Left panel form controls -->
+                <div class="glass-panel">
+                    <h3 class="form-title"><i class="fa-solid fa-sliders"></i> Car Parameters</h3>
+                    <form id="predictor-form" novalidate>
+                        <div class="input-grid">
+                            
+                            <!-- Brand Chained select -->
+                            <div class="form-group">
+                                <label for="brand">Brand</label>
+                                <select id="brand" class="form-select" required>
+                                    <option value="" disabled selected>Select Brand</option>
+                                </select>
+                            </div>
+
+                            <!-- Model Chained select -->
+                            <div class="form-group">
+                                <label for="model">Model</label>
+                                <select id="model" class="form-select" disabled required>
+                                    <option value="" disabled selected>Select Model</option>
+                                </select>
+                            </div>
+
+                            <!-- Fuel Type toggle pill selector -->
+                            <div class="form-group">
+                                <label>Fuel Type</label>
+                                <div class="pill-selector">
+                                    <div class="pill-option">
+                                        <input type="radio" id="fuel-petrol" name="fuel_type" value="Petrol" checked>
+                                        <label for="fuel-petrol">Petrol</label>
+                                    </div>
+                                    <div class="pill-option">
+                                        <input type="radio" id="fuel-diesel" name="fuel_type" value="Diesel">
+                                        <label for="fuel-diesel">Diesel</label>
+                                    </div>
+                                    <div class="pill-option">
+                                        <input type="radio" id="fuel-cng" name="fuel_type" value="CNG">
+                                        <label for="fuel-cng">CNG</label>
+                                    </div>
+                                    <div class="pill-option">
+                                        <input type="radio" id="fuel-electric" name="fuel_type" value="Electric">
+                                        <label for="fuel-electric">Electric</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Transmission toggle pill selector -->
+                            <div class="form-group">
+                                <label>Transmission</label>
+                                <div class="pill-selector">
+                                    <div class="pill-option">
+                                        <input type="radio" id="trans-manual" name="transmission" value="Manual" checked>
+                                        <label for="trans-manual">Manual</label>
+                                    </div>
+                                    <div class="pill-option">
+                                        <input type="radio" id="trans-auto" name="transmission" value="Automatic">
+                                        <label for="trans-auto">Automatic</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Owner Type toggle pill selector -->
+                            <div class="form-group">
+                                <label>Owner History</label>
+                                <div class="pill-selector">
+                                    <div class="pill-option">
+                                        <input type="radio" id="owner-first" name="owner_type" value="First" checked>
+                                        <label for="owner-first">First</label>
+                                    </div>
+                                    <div class="pill-option">
+                                        <input type="radio" id="owner-second" name="owner_type" value="Second">
+                                        <label for="owner-second">Second</label>
+                                    </div>
+                                    <div class="pill-option">
+                                        <input type="radio" id="owner-third" name="owner_type" value="Third">
+                                        <label for="owner-third">Third</label>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <!-- Location select -->
+                            <div class="form-group">
+                                <label for="location">Location</label>
+                                <select id="location" class="form-select" required>
+                                    <option value="" disabled selected>Select City</option>
+                                </select>
+                            </div>
+
+
+
+                            <!-- Year range slider -->
+                            <div class="form-group full-width">
+                                <label for="year">Year of Purchase <span id="year-val" class="label-value">2018</span></label>
+                                <input type="range" id="year" min="2010" max="2025" step="1" value="2018">
+                            </div>
+
+                            <!-- Kilometers range slider -->
+                            <div class="form-group full-width">
+                                <label for="kms">Kilometers Driven <span id="kms-val" class="label-value">120,000 km</span></label>
+                                <input type="range" id="kms" min="5000" max="250000" step="5000" value="80000">
+                            </div>
+
+                            <!-- Engine CC range slider -->
+                            <div class="form-group full-width">
+                                <label for="engine">Engine Size <span id="engine-val" class="label-value">1200 cc</span></label>
+                                <input type="range" id="engine" min="796" max="2200" step="50" value="1200">
+                            </div>
+
+                            <!-- Mileage Kmpl range slider -->
+                            <div class="form-group full-width">
+                                <label for="mileage">Mileage <span id="mileage-val" class="label-value">18.0 kmpl</span></label>
+                                <input type="range" id="mileage" min="12.0" max="28.0" step="0.5" value="18.0">
+                            </div>
+
+                        </div>
+                        <button type="submit" class="btn-submit">Calculate Valuation <i class="fa-solid fa-calculator"></i></button>
+                    </form>
+                </div>
+
+                <!-- Right panel 3D Result Card -->
+                <div class="card-container">
+                    <div id="card-inner" class="card-inner">
+                        <!-- Front Card (Waiting State) -->
+                        <div class="card-front">
+                            <div class="card-front-content">
+                                <div class="animation-hub">
+                                    <div class="pulse-circle"></div>
+                                    <div class="pulse-circle"></div>
+                                    <div class="pulse-circle"></div>
+                                    <div class="animation-center-icon">
+                                        <i class="fa-solid fa-gauge-high"></i>
+                                    </div>
+                                </div>
+                                <div class="card-front-text">
+                                    <h3>Valuation Studio</h3>
+                                    <p>Adjust specifications on the left panel and click Calculate to run the analytical model.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Back Card (Result Price State) -->
+                        <div class="card-back">
+                            <div class="result-header">
+                                <h3>Calculation Result</h3>
+                                <span class="badge-resale">Resale rating: Good</span>
+                            </div>
+
+                            <div class="price-display-wrapper">
+                                <div class="price-title">Estimated Market Value</div>
+                                <div class="price-value-container">
+                                    <span class="price-currency">₹</span>
+                                    <span id="price-number" class="price-number">0</span>
+                                </div>
+                            </div>
+
+                            <div class="diagnostics-panel">
+                                <div class="diag-item">
+                                    <span class="diag-label"><i class="fa-solid fa-gas-pump"></i> Fuel Type</span>
+                                    <span id="diag-fuel" class="diag-value">Petrol</span>
+                                </div>
+                                <div class="diag-item">
+                                    <span class="diag-label"><i class="fa-solid fa-gear"></i> Transmission</span>
+                                    <span id="diag-trans" class="diag-value">Manual</span>
+                                </div>
+                                <div class="diag-item">
+                                    <span class="diag-label"><i class="fa-solid fa-road"></i> Mileage Span</span>
+                                    <span id="diag-kms" class="diag-value">80,000 km</span>
+                                </div>
+                                <div>
+                                    <div class="diag-label" style="margin-top: 10px; font-size:12px;">Market Valuation Weight</div>
+                                    <div class="diag-bar-container">
+                                        <div id="diag-bar" class="diag-bar"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button id="btn-recalculate" class="btn-recalculate"><i class="fa-solid fa-rotate-left"></i> Run Another Predictor</button>
+                        </div>
+
+                    </div>
+                    <!-- Shimmer loading overlay -->
+                    <div id="loader-overlay" class="loader-overlay">
+                        <div class="spinner"></div>
+                        <div style="font-family:'Outfit', sans-serif; font-weight:700; letter-spacing:1px; font-size: 14px; text-transform: uppercase; color: var(--secondary);">Analyzing Vehicle Data...</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- DATA TRENDS / INSIGHT CARDS SECTION -->
+    <section id="insights" class="insights-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Strategic <span>Market Insights</span></h2>
+                <p>Hover over the cards below to reveal key data trends discovered during our analysis of 15,000 used car sales in India.</p>
+            </div>
+            
+            <div class="insights-grid">
+                <!-- Insight Card 1 -->
+                <div class="insight-card">
+                    <div class="insight-card-inner">
+                        <div class="insight-front">
+                            <div class="insight-icon"><i class="fa-solid fa-bolt"></i></div>
+                            <h3>Engine Size vs Price</h3>
+                            <div class="insight-arrow">Hover to reveal <i class="fa-solid fa-angle-right"></i></div>
+                        </div>
+                        <div class="insight-back">
+                            <div class="insight-stat">+34% Value</div>
+                            <p>Vehicles with engines above 1,500 cc display a 34% higher resale value stability over time compared to 998 cc engines, which experience faster depreciation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insight Card 2 -->
+                <div class="insight-card">
+                    <div class="insight-card-inner">
+                        <div class="insight-front">
+                            <div class="insight-icon"><i class="fa-solid fa-arrow-trend-down"></i></div>
+                            <h3>Depreciation sweet spot</h3>
+                            <div class="insight-arrow">Hover to reveal <i class="fa-solid fa-angle-right"></i></div>
+                        </div>
+                        <div class="insight-back">
+                            <div class="insight-stat">Year 4 Peak</div>
+                            <p>Used car prices drop steepest in years 1-3 (averaging 15% annually). Buying a 4-year-old car offers the best balance of mileage, modern features, and cost savings.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insight Card 3 -->
+                <div class="insight-card">
+                    <div class="insight-card-inner">
+                        <div class="insight-front">
+                            <div class="insight-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                            <h3>Location Markups</h3>
+                            <div class="insight-arrow">Hover to reveal <i class="fa-solid fa-angle-right"></i></div>
+                        </div>
+                        <div class="insight-back">
+                            <div class="insight-stat">Metro Premium</div>
+                            <p>Cars sold in tier-1 cities like Mumbai, Bengaluru, and Delhi fetch up to a 12% markup due to higher density, whereas Lucknow and Ludhiana show lower baseline values.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer>
+        <div class="container footer-grid">
+            <div style="font-family:'Outfit'; font-weight:800; font-size:20px; color:var(--text-bright);">
+                CAR STUDIO <span class="logo-dot" style="display:inline-block;"></span>
+            </div>
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#model-analytics">Model Performance</a></li>
+                <li><a href="#predictor">Predictor Engine</a></li>
+                <li><a href="mailto:support@carstudio.com">Contact Support</a></li>
+            </ul>
+            <div>&copy; 2026 Car Studio. Group Project - Used Car Price Prediction UI.</div>
+        </div>
+    </footer>
+
+    <!-- Script References -->
+    <script src="model.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
